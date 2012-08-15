@@ -1,0 +1,25 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+	<ui:composition template="/resources/master_template.xhtml"
+		xmlns_ui="http://java.sun.com/jsf/facelets">
+		<ui:define name="windowTitle">Login</ui:define>
+		<ui:define name="content">
+			<h2>Login</h2>
+			<h:form>
+				<h:panelGrid columns="2">
+						<h:outputText value="Email Address:" />
+						<h:inputText value="#{userBean.email}" />
+						<h:outputText value="Password:" />
+						<h:inputSecret value="#{userBean.password}" />
+				</h:panelGrid>
+				<h:commandLink value="Log In" action="#{userBean.login}" immediate="true" />
+				
+				<p><h:messages /></p>
+				
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>

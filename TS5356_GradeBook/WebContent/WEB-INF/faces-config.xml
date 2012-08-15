@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd"
+    version="2.1">
+
+<!-- /account -->
+
+	<!--  User Login -->
+	<navigation-rule>
+		<from-view-id>/accounts/login</from-view-id>
+		<navigation-case>
+			<from-outcome>loginFailure</from-outcome>
+			<to-view-id>/accounts/login</to-view-id>
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>loginSuccess</from-outcome>
+			<to-view-id>/index</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<!--  User Creation -->
+	<navigation-rule>
+		<from-view-id>/accounts/register</from-view-id>
+		<navigation-case>
+			<from-outcome>registrationFailure</from-outcome>
+			<to-view-id>/accounts/register</to-view-id>
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>registrationSuccess</from-outcome>
+			<to-view-id>/accounts/register_success</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<!-- Manage Users -->
+	<navigation-rule>
+		<from-view-id>/accounts/manage_users</from-view-id>
+		<navigation-case>
+			<from-action>#{userMgmtBean.findUsers}</from-action>
+			<to-view-id>/accounts/manage_users</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+<!-- /courses -->
+
+	<!-- TBD -->
+
+<!-- /listings -->
+
+	<!-- TBD -->
+
+</faces-config>

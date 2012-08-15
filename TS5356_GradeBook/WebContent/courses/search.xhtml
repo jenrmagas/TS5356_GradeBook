@@ -1,0 +1,68 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+<ui:composition template="/resources/master_template.xhtml"
+	xmlns_ui="http://java.sun.com/jsf/facelets">
+	<ui:define name="windowTitle">Search Master Courses</ui:define>
+	<ui:define name="content">
+		<h2>Search Master Courses</h2>
+		<h:form styleClass="formstyle">
+			<h:panelGrid columns="2">
+				<h:outputText value="Course ID:" />
+				<h:inputText id="courseId" value="#{courseBean.id}" />
+				<h:outputText value="Course Name:" />
+				<h:inputText id="lname" value="#{courseBean.name}" />
+				<h:outputText value="Department:" />
+				<h:selectOneListbox id="dept" value="#{courseBean.department}" >
+						<f:selectItems value="#{courseBean.allDepartments}"/>
+					</h:selectOneListbox>
+			</h:panelGrid>
+			<p><h:commandButton value="Search" action="#{courseBean.findCourses}" /></p>
+			<p><h:messages /></p>
+		</h:form>
+	
+		<h:panelGroup rendered="#{courseBean.results}">
+			<h2>Search Results</h2>
+		
+			<h:dataTable value="#{courseBean.courseList}" var="course" >
+				<h:column>
+					<f:facet name="header">Department</f:facet>
+					#{course.department.name}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Course ID</f:facet>
+					#{course.id}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Name</f:facet>
+					#{course.name}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Details</f:facet>
+					<h:form>
+						<h:commandButton value="Course Details" action="courseDetails" /> 
+						<h:commandButton value="Find Listings" action="findListings" />
+					</h:form>
+				</h:column>
+				<h:column rendered="#{userBean.administrator}">
+					<f:facet name="header">Admin Actions</f:facet>
+					<h:form>
+						<h:commandButton value="Edit Course" action="editCourse" /> 
+						<h:commandButton value="Disable Course" action="disableCourse" />
+					</h:form>
+				</h:column>
+				<h:column rendered="#{userBean.administrator}">
+					<f:facet name="header">Instructor Actions</f:facet>
+					<h:form>
+						<h:commandButton value="Manage Assignments" action="manageAssignments" /> 
+					</h:form>
+				</h:column>
+			</h:dataTable>
+		</h:panelGroup>
+		
+	</ui:define>
+</ui:composition>
+
+</html>

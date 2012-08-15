@@ -1,0 +1,39 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ul>
+		<li><span>Your Account</span>
+			<ul>
+				<li><h:link value="Log In" outcome="/account/login"  rendered="#{!user.loggedIn}"/> / 
+					<h:link value="Register" outcome="/account/register" rendered="#{!user.loggedIn}" /></li>
+				<li><h:link value="Manage Users" outcome="/account/search" rendered="#{user.administrator}" /></li>
+				<li><h:link value="Settings" outcome="/account/edit_user"  rendered="#{user.loggedIn}" /></li>
+				<li><h:link value="Log Out" action="#{userBean.logout}" rendered="#{user.loggedIn}" /></li>
+			</ul>
+		</li>
+		<li><span>Master Courses</span>
+			<ul>
+				<li><h:link value="Search Master Courses" outcome="/courses/search" /></li>
+				<li><h:link value="New Master Course" outcome="/courses/edit" rendered="#{user.instructor}" /></li>
+			</ul>
+		</li>
+		<li><span>Course Listings</span>
+			<ul>
+				<li><h:link value="Search Course Listings" outcome="/listings/search" /></li>
+				<li><h:link value="New Course Listing" outcome="/listings/edit" rendered="#{user.instructor}" /></li>
+				<li><h:link value="Manage Current Course Listings" outcome="/listings/contents/current" /></li>
+			</ul>
+		</li>
+		<li><span>Students</span>
+			<ul>
+				<li><h:link value="Search Students" outcome="/students/search"  rendered="#{!user.student}"/></li>
+				<li><h:link value="New Student Registration" outcome="/account/edit_user"  rendered="#{user.administrator}"/></li><!-- TODO: From here, should only allow creation of new STUDENT role user -->
+				<li><h:link value="Manage Enrollment" outcome="/students/manage_enrollment"  rendered="#{user.instructor}"/></li><!--  TODO: Limit visibility by role -->
+				<li><h:link value="View Grades" outcome="/students/grades" /></li><!--  TODO: Limit visibility by role -->
+			</ul>
+		</li>
+	</ul>
+</ui:composition>

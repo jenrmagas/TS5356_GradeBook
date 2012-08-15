@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+        http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+
+	<persistence-unit name="TS5356" transaction-type="JTA">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<jta-data-source>jdbc/TS5356</jta-data-source>
+
+		<mapping-file>META-INF/people.xml</mapping-file>
+
+		<class>model.course.Assignment</class>
+		<class>model.course.Course</class>
+		<class>model.course.CourseListing</class>
+		<class>model.course.Grade</class>
+
+		<class>model.institution.Department</class>
+		<class>model.institution.Semester</class>
+		
+		<class>model.people.Administrator</class>
+		<class>model.people.EnrollmentStaff</class>
+		<class>model.people.Instructor</class>
+		<class>model.people.Student</class>
+		<class>model.people.User</class>
+ 
+		<exclude-unlisted-classes />
+
+	 	<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.hbm2ddl.auto" value="create" />
+		</properties>
+
+	</persistence-unit>
+</persistence>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:head>
+		<title><ui:insert name="windowTitle" /></title>
+		<h:outputStylesheet library="css" name="two-column.css" />
+		<h:outputStylesheet library="css" name="forms.css" />
+	</h:head>
+	
+	<h:body>
+		<div id="header">
+			<h1><h:link value="Allepac University" outcome="/index" /></h1>
+		</div>
+		<div class="colmask leftmenu">
+			<div class="colleft">
+				<div class="col1">
+					<ui:insert name="content" />
+				</div>
+				<div class="col2">
+					<ui:include src="/resources/navigation.xhtml" />
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+			<p>Content solely created by Jen Magas. All resources not created by Jen are attributed accordingly.</p>
+			<p>This page uses the <a href="http://matthewjamestaylor.com/blog/perfect-2-column-left-menu.htm">Perfect 'Left Menu' 2 Column Liquid 
+			Layout</a> by <a href="http://matthewjamestaylor.com">Matthew James Taylor</a>. View more <a href="http://matthewjamestaylor.com/blog/-website-layouts">website 
+			layouts</a> and <a href="http://matthewjamestaylor.com/blog/-web-design">web design articles</a>.</p>
+		</div>
+	</h:body>
+</html>

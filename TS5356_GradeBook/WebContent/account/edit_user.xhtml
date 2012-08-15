@@ -1,0 +1,50 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+	<ui:composition template="/resources/master_template.xhtml"
+		xmlns_ui="http://java.sun.com/jsf/facelets">
+		<ui:define name="windowTitle">Edit User</ui:define>
+		<ui:define name="content">
+			<h2>Login</h2>
+			<h:form>
+				<h:panelGrid columns="2">
+					<h:outputText value="Current Email" />
+					<h:outputText value="#{userBean.email}" />
+
+					<h:outputText value="New Email" />
+					<h:outputText value="#{userBean.emailReplacement}" />
+
+					<h:outputText value="Repeat New Email" />
+					<h:inputText value="#{userBean.emailConfirm}" />
+
+					<h:outputText value="Middle Initial" />
+					<h:inputText value="#{userBean.middleInitial}" maxlength="1" size="1"/>
+
+					<h:outputText value="Last Name" />
+					<h:inputText value="#{userBean.lastName}" />
+
+					<h:outputText value="User Type"/>
+					<h:selectOneListbox value="#{userBean.userType">
+						<f:selectItems value="#{userType.values}" />
+					</h:selectOneListbox>
+
+					<h:outputText value="Password" />
+					<h:inputSecret value="#{userBean.password}" />
+
+					<h:outputText value="New Email" />
+					<h:inputSecret value="#{userBean.emailReplacement}" />
+
+					<h:outputText value="Repeat Password" />
+					<h:inputSecret value="#{userBean.passwordConfirm}" />
+
+				</h:panelGrid>
+				<h:commandLink value="Save" action="#{userBean.saveChanges}" />
+				
+				<p><h:messages /></p>
+				
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>

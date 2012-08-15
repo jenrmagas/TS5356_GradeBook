@@ -1,0 +1,26 @@
+.formstyle {
+	width: 100%;
+}
+
+.formstyle fieldset {
+	border: none;
+	width: 50%;
+}
+
+.formstyle fieldset legend {
+	text-decoration: none;
+	font-weight: bold;
+	font-variant: small-caps;
+}
+
+.formstyle span {
+	text-align: right;
+	vertical-align: top;
+	width: 50%;
+	display: inline-block;
+}
+
+
+.formstyle textarea {
+	width: 100%;
+}

@@ -1,0 +1,58 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+<ui:composition template="/resources/master_template.xhtml"
+	xmlns_ui="http://java.sun.com/jsf/facelets">
+	<ui:define name="windowTitle">Manage Users</ui:define>
+	<ui:define name="content">
+		<h2>Manage Users</h2>
+		<h:form styleClass="formstyle">
+			<h:panelGrid columns="2">
+				<h:outputText value="Email:" />
+				<h:inputText id="email" value="#{userMgmtBean.email}" />
+				<h:outputText value="Last Name:" />
+				<h:inputText id="lname" value="#{userMgmtBean.lname}" />
+				<h:outputText value="First Name:" />
+				<h:inputText id="fname" value="#{userMgmtBean.fname}" />
+				<h:outputText value="User Role:" />
+				<h:selectOneListbox id="role" value="${userMgmtBean.userType}">
+						<f:selectItems value="#{userMgmtBean.allUserTypes}"/>
+					</h:selectOneListbox>
+			</h:panelGrid>
+			<p><h:commandButton value="Search" action="#{userMgmtBean.findUsers}" /></p>
+			<p><h:messages /></p>
+		</h:form>
+	
+		<h:panelGroup rendered="#{userMgmtBean.results}">
+			<h2>Search Results</h2>
+		
+			<h:dataTable value="#{userMgmtBean.userList}" var="user" >
+				<h:column>
+					<f:facet name="header">Type</f:facet>
+					#{user.userType}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Email</f:facet>
+					#{user.email}
+				</h:column>
+				<h:column>
+					<f:facet name="header">First Name</f:facet>
+					#{user.firstname}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Middle Initial</f:facet>
+					#{user.middleInitial}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Last Name</f:facet>
+					#{user.lastName}
+				</h:column>
+			</h:dataTable>
+		</h:panelGroup>
+		
+	</ui:define>
+</ui:composition>
+
+</html>
